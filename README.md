@@ -8,12 +8,12 @@ This is the official repository for the MultiMUC dataset, as presented in our EA
 
 The repository has the following structure:
 
-- `data.zip`: The MultiMUC data files
-- `predictions.zip`: (corrected) test set predictions for IterX, GTT, and ChatGPT
+- `data/`: The MultiMUC data files, along with a README explaining them
+- `predictions.zip`: (corrected) test set predictions for IterX, GTT, and ChatGPT, along with a README explaining them
 - `iterx/`: IterX source code (needed for computing CEAF-RME scores)
 - `scripts/eval.py`: Evaluation script for computing CEAF-REE scores
 
-If you wish only to use the data or model predictions and do not care about running evaluation scripts, then no setup is required (beyond unzipping `data.zip` and `predictions.zip`). However, if you wish to run evaluation on the model predictions, see [Evaluation](#evaluation) below. Beyond the data, predictions, and evaluation scripts provided above, we aim to release instructions for model training and inference soon. Please create an issue if you need this functionality and you find that it has not yet been provided.
+If you wish only to use the data or model predictions and do not care about running evaluation scripts, then no setup is required (beyond unzipping `data/multimuc_v1.0.zip` and `predictions.zip`). However, if you wish to run evaluation on the model predictions, see [Evaluation](#evaluation) below. Beyond the data, predictions, and evaluation scripts provided above, we aim to release instructions for model training and inference soon. Please create an issue if you need this functionality and you find that it has not yet been provided.
 
 ### Evaluation
 
@@ -24,7 +24,7 @@ Our paper reports two template filling evaluation metrics, CEAF-REE and CEAF-RME
 To compute CEAF-REE scores, you should use the provided `scripts/eval.py` script. This should require only a Python installation (we used 3.9) to run. It can be run from this directory as follows:
 
 ```
-python scripts.eval.py --pred_file predictions/{model}/{setting}/{language}/test_preds.json --gold_file data/corrected/{language}/test.jsonl [--chinese]
+python scripts.eval.py --pred_file predictions/{model}/{setting}/{language}/test_preds.json --gold_file data/multimuc_v1.0/corrected/{language}/test.jsonl [--chinese]
 ```
 
 where `model` is one of "iterx", "gtt", or "chatgpt"; `setting` is one of "bi", "tgt\_auto", or "tgt\_man"; and `language` is one of "ar", "fa", "ko", "ru", or "zh". The `--chinese` flag should be set only if evaluating on Chinese (`zh`).
@@ -42,7 +42,7 @@ cd iterx
 Next, you should follow the environment configuration instructions for the IterX repo that are provided [here](https://github.com/wanmok/iterx#environment-setup). Once you have done so, `cd` into `iterx/`, then compute CEAF-RME scores as follows:
 
 ```
-PYTHONPATH=./src python scripts/ceaf-scorer.py score --dataset MUC ../../predictions/{model}/{setting}/{language}/test\_preds.json ../../data/corrected/{language}/test.jsonl --file-type GTT 
+PYTHONPATH=./src python scripts/ceaf-scorer.py score --dataset MUC ../../predictions/{model}/{setting}/{language}/test\_preds.json ../../data/multimuc_v1.0/corrected/{language}/test.jsonl --file-type GTT 
 ```
 
 where the possible values for `model`, `setting`, and `language` are the same as above.

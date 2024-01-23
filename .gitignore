@@ -161,5 +161,5 @@ cython_debug/
 #
 
 # MultiMUC
-data/
+data/multimuc_v1.0/
 predictions/
