@@ -2,7 +2,7 @@
 
 This is the official repository for the MultiMUC dataset, as presented in our EACL 2024 paper:
 
-> *MultiMUC: Multilingual Template Filling on MUC-4*. William Gantt, Shabnam Behzad, Hannah YougEun An, Yunmo Chen, Aaron Steven White, Benjamin Van Durme, Mahsa Yarmohammadi.
+> *MultiMUC: Multilingual Template Filling on MUC-4*. William Gantt, Shabnam Behzad, Hannah YoungEun An, Yunmo Chen, Aaron Steven White, Benjamin Van Durme, Mahsa Yarmohammadi.
 
 ## Getting Started
 
